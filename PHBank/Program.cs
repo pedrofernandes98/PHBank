@@ -43,6 +43,10 @@ namespace PHBank
             gerenciaBonificacoes.RegistrarBonificacao(auxiliar);
             listaFuncionarios.Add(auxiliar);
 
+            Auxiliar dev = new Auxiliar("Maria", "513.322.428-12");
+            gerenciaBonificacoes.RegistrarBonificacao(dev);
+            listaFuncionarios.Add(dev);
+
             ListaFuncionarios(listaFuncionarios, gerenciaBonificacoes);
         }
 
