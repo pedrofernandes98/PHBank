@@ -2,12 +2,12 @@
 
 namespace PHBank_RH.Funcionarios
 {
-    public class Diretor : Funcionario
+    public class Diretor : Autenticavel
     {
         private readonly double PERC_BONIFICACAO_DIRETOR = 0.5;
         private readonly double PERC_AUMENTAR_SALARIO_DIRETOR = 1.15;
 
-        public Diretor(string nome, string cpf, double salario = 5000) : base(nome, cpf, salario) 
+        public Diretor(string nome, string cpf, string senha, double salario = 5000) : base(nome, cpf, senha, salario) 
         { }
 
         public override double GetBonificacao()

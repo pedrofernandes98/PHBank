@@ -2,6 +2,7 @@
 using PHBank_RH;
 using System.Collections.Generic;
 using PHBank_RH.Funcionarios;
+using PHBank_RH.Sistemas;
 
 namespace PHBank
 {
@@ -13,8 +14,21 @@ namespace PHBank
         }       
         static void Main(string[] args)
         {
-            CadastrarFuncionarios();
+            //CadastrarFuncionarios();
+            LogarSistemaInterno();
             Console.ReadKey();
+        }
+
+        public static void LogarSistemaInterno()
+        {
+            Diretor diretor = new Diretor("Cláudia", "147.159.621-58", "123456", 5000);
+            GerenteConta gerenteConta = new GerenteConta("Ronaldo", "248.157.248-17", "22314");
+            Designer designer = new Designer("Wellingto", "123.456.147-12");
+
+            SistemaInterno sistemaInterno = new SistemaInterno();
+            sistemaInterno.Logar(diretor, "123456");
+            sistemaInterno.Logar(gerenteConta, "25");
+            //sistemaInterno.Logar(designer, "545450");
         }
 
         public static void InserirFuncionario(Funcionario funcionario)
@@ -27,11 +41,11 @@ namespace PHBank
             GerenciadorBonificacao gerenciaBonificacoes = new GerenciadorBonificacao();
             List<Funcionario> listaFuncionarios = new List<Funcionario>();
 
-            Diretor diretor = new Diretor("Cláudia", "147.159.621-58", 5000);
+            Diretor diretor = new Diretor("Cláudia", "147.159.621-58","123456", 5000);
             gerenciaBonificacoes.RegistrarBonificacao(diretor);
             listaFuncionarios.Add(diretor);
 
-            GerenteConta gerenteConta = new GerenteConta("Ronaldo", "248.157.248-17");
+            GerenteConta gerenteConta = new GerenteConta("Ronaldo", "248.157.248-17", "123456");
             gerenciaBonificacoes.RegistrarBonificacao(gerenteConta);
             listaFuncionarios.Add(gerenteConta);
 

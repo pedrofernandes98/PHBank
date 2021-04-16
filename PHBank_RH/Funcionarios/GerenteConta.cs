@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PHBank_RH.Funcionarios
 {
-    public class GerenteConta : Funcionario
+    public class GerenteConta : Autenticavel
     {
         private readonly double PERC_BONIFICAO_GERENTE_CONTA = 0.25;
         private readonly double PERC_AUMENTO_GERENTE_CONTA = 1.05;
-        public GerenteConta(string nome, string cpf, double salario = 4000) : base(nome, cpf, salario)
+        public GerenteConta(string nome, string cpf, string senha, double salario = 4000) : base(nome, cpf, senha, salario)
         { }
 
         public override double GetBonificacao()
