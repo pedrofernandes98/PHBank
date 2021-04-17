@@ -3,6 +3,7 @@ using PHBank_RH;
 using System.Collections.Generic;
 using PHBank_RH.Funcionarios;
 using PHBank_RH.Sistemas;
+using PHBank_RH.Externos;
 
 namespace PHBank
 {
@@ -23,11 +24,14 @@ namespace PHBank
         {
             Diretor diretor = new Diretor("Cláudia", "147.159.621-58", "123456", 5000);
             GerenteConta gerenteConta = new GerenteConta("Ronaldo", "248.157.248-17", "22314");
-            Designer designer = new Designer("Wellingto", "123.456.147-12");
+            //Designer designer = new Designer("Wellingto", "123.456.147-12");
+
+            ParceiroComercial parceiroComercial = new ParceiroComercial("Rivaldo", "123456");
 
             SistemaInterno sistemaInterno = new SistemaInterno();
             sistemaInterno.Logar(diretor, "123456");
             sistemaInterno.Logar(gerenteConta, "25");
+            sistemaInterno.Logar(parceiroComercial, "123456");
             //sistemaInterno.Logar(designer, "545450");
         }
 

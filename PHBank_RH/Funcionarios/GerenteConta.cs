@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PHBank_RH.Funcionarios
 {
-    public class GerenteConta : Autenticavel
+    public class GerenteConta : FuncionarioAutenticavel
     {
         private readonly double PERC_BONIFICAO_GERENTE_CONTA = 0.25;
         private readonly double PERC_AUMENTO_GERENTE_CONTA = 1.05;
