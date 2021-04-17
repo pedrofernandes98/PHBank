@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using PHBank_RH.Funcionarios;
 using PHBank_RH.Sistemas;
 using PHBank_RH.Externos;
+using PHBank_GerenciamentoContas;
 
 namespace PHBank
 {
@@ -16,7 +17,8 @@ namespace PHBank
         static void Main(string[] args)
         {
             //CadastrarFuncionarios();
-            LogarSistemaInterno();
+            //LogarSistemaInterno();
+            RealizarTransacoesContaCorrente();
             Console.ReadKey();
         }
 
@@ -86,6 +88,27 @@ namespace PHBank
             Console.WriteLine($"Total de Bonificação: R$ {gerenciador.TotalBonificacao}");
 
             Console.ReadKey();
+
+        }
+    
+        public static void RealizarTransacoesContaCorrente()
+        {
+            ContaCorrente contaCorrente = new ContaCorrente("Mirella Alana Andreia Carvalho", "696.269.200-50", 1234, 123456, "Cabelereira");
+            contaCorrente.Depositar(1000.00);
+
+            Console.WriteLine($"{contaCorrente.Titular.Nome} - R${contaCorrente.Saldo}");
+
+            ContaCorrente contaCorrente2 = new ContaCorrente("Lúcia Sophie Rita Oliveira", "115.218.455-57", 1234, 123457, "Médica");
+            contaCorrente2.Depositar(1000.00);
+            Console.WriteLine($"{contaCorrente2.Titular.Nome} - R${contaCorrente2.Saldo}");
+
+            if (contaCorrente2.Transferir(contaCorrente, 200.50)) 
+            {
+                Console.WriteLine("Tranferência realizada!");
+            }
+            
+            Console.WriteLine($"{contaCorrente.Titular.Nome} - R${contaCorrente.Saldo}");
+            Console.WriteLine($"{contaCorrente2.Titular.Nome} - R${contaCorrente2.Saldo}");
 
         }
     }

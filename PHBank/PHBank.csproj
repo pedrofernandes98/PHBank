@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PHBank_GerenciamentoContas\PHBank_GerenciamentoContas.csproj" />
     <ProjectReference Include="..\PHBank_RH\PHBank_RH.csproj" />
   </ItemGroup>
 

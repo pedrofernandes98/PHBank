@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHBank", "PHBank\PHBank.csproj", "{D7903B45-C530-42B9-AD7D-6F78A53FD452}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PHBank", "PHBank\PHBank.csproj", "{D7903B45-C530-42B9-AD7D-6F78A53FD452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHBank_RH", "PHBank_RH\PHBank_RH.csproj", "{2AC416E4-04CB-4CF5-8000-AFB65FA02C4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PHBank_RH", "PHBank_RH\PHBank_RH.csproj", "{2AC416E4-04CB-4CF5-8000-AFB65FA02C4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHBank_GerenciamentoContas", "PHBank_GerenciamentoContas\PHBank_GerenciamentoContas.csproj", "{7A299A71-10A6-4AFD-AEE1-9DF14AF6888C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2AC416E4-04CB-4CF5-8000-AFB65FA02C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC416E4-04CB-4CF5-8000-AFB65FA02C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AC416E4-04CB-4CF5-8000-AFB65FA02C4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A299A71-10A6-4AFD-AEE1-9DF14AF6888C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A299A71-10A6-4AFD-AEE1-9DF14AF6888C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A299A71-10A6-4AFD-AEE1-9DF14AF6888C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A299A71-10A6-4AFD-AEE1-9DF14AF6888C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
