@@ -18,7 +18,8 @@ namespace PHBank
         {
             //CadastrarFuncionarios();
             //LogarSistemaInterno();
-            RealizarTransacoesContaCorrente();
+            //RealizarTransacoesContaCorrente();
+            TestarExceptions();
             Console.ReadKey();
         }
 
@@ -109,6 +110,35 @@ namespace PHBank
             
             Console.WriteLine($"{contaCorrente.Titular.Nome} - R${contaCorrente.Saldo}");
             Console.WriteLine($"{contaCorrente2.Titular.Nome} - R${contaCorrente2.Saldo}");
+
+        }
+
+        public static void TestarExceptions()
+        {
+            try
+            {
+                ContaCorrente conta = new ContaCorrente(0, 0);
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine($"Mensagem de erro: {ex.Message}");
+                Console.WriteLine($"Nome do Parâmetro que gerou a Exception: {ex.ParamName}");
+                Console.WriteLine("Stack Trace:");
+                Console.WriteLine(ex.StackTrace);
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            try
+            {
+                ContaCorrente conta = new ContaCorrente(123, 0);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Mensagem de erro: {ex.Message}");
+                Console.WriteLine($"Nome do Parâmetro que gerou a Exception: {ex.ParamName}");
+                Console.WriteLine("Stack Trace:");
+                Console.WriteLine(ex.StackTrace);
+            }
 
         }
     }

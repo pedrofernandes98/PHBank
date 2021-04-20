@@ -10,56 +10,58 @@ namespace PHBank_GerenciamentoContas
     {
         public static int TotalContas { get; private set; }
         public Cliente Titular { get; set; }
-        public int NumeroConta { get; set; }
-        private int _agencia;
-        public int Agencia
-        {
-            get
-            {
-                return _agencia;
-            }
-            set
-            {
-                if(value > 0)
-                {
-                    _agencia = value;
-                }
-            }
-        }
+        public int NumeroConta { get;} //readOnly
+        public int Agencia { get; }//readOnly
         public double Saldo { get; private set; }
 
-
-        public ContaCorrente(int agencia, int numeroConta)
+        public bool Ativa { get; set; }
+        public ContaCorrente(int agencia, int numeroConta, bool ativa = true)
         {
+            validaAgenciaConta(agencia, numeroConta);
             Agencia = agencia;
             NumeroConta = numeroConta;
             Saldo = 0;
+            Ativa = ativa;
 
             TotalContas++;
         }
 
-        public ContaCorrente(Cliente titular, int agencia, int numeroConta)
+        public ContaCorrente(Cliente titular, int agencia, int numeroConta, bool ativa = true)
         {
+            validaAgenciaConta(agencia, numeroConta);
             Titular = titular;
             Agencia = agencia;
             NumeroConta = numeroConta;
             Saldo = 0;
+            Ativa = ativa;
 
             TotalContas++;
         }
 
-        public ContaCorrente(string nome, string cpf, int agencia, int numeroConta, string profissao = "")
+        public ContaCorrente(string nome, string cpf, int agencia, int numeroConta, string profissao = "", bool ativa = true)
         {
+            validaAgenciaConta(agencia, numeroConta);
             Titular = new Cliente(nome, cpf, profissao);
             Agencia = agencia;
             NumeroConta = numeroConta;
             Saldo = 0;
+            Ativa = ativa;
 
             TotalContas++;
         }
 
+        private void validaAgenciaConta(int agencia, int numeroConta)
+        {
+            if (agencia <= 0)
+                throw new ArgumentException("O número da agência não pode ser menor o igual a 0.", nameof(agencia));
+
+            if (numeroConta <= 0)
+                throw new ArgumentException("O número da conta não pode ser menor o igual a 0.", nameof(numeroConta));
+        }
+
         public void Depositar(double valor)
         {
+            
             if(valor > 0)
             {
                 Saldo += valor;
