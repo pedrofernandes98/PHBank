@@ -74,9 +74,15 @@ namespace PHBank_GerenciamentoContas
 
         public bool Sacar(double valor)
         {
+            if(valor <= 0)
+            {
+                Console.WriteLine("Valor de saque inválido!");
+                return false;
+            }
+
             if(valor > Saldo)
             {
-                Console.WriteLine($"Saldo insuficiente!\nSaldo Atual: R${Saldo}");
+                Console.WriteLine($"Saldo insuficiente para o saque de R$ {valor}!\nSaldo Atual: R${Saldo}");
                 return false;
             }
 
@@ -84,14 +90,56 @@ namespace PHBank_GerenciamentoContas
             return true;
         }
 
+        public void SacarException(double valor)
+        {
+            if (valor <= 0)
+            {
+                throw new ArgumentException("Valor de saque inválido!", nameof(valor));
+            }
+
+            if (valor > Saldo)
+            {
+                string mensagem = $"Saldo insuficiente para o saque de R$ {valor}!\nSaldo Atual: R${Saldo}";
+                throw new SaldoInsuficienteException(Saldo, valor);
+            }
+
+            Saldo -= valor;
+        }
+
         public bool Transferir(ContaCorrente contaDestino, double valor)
         {
             if (this.Sacar(valor))
             {
-                contaDestino.Depositar(valor);
-                return true;
+                if(contaDestino != null)
+                {
+                    contaDestino.Depositar(valor);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Conta de destino inválida");
+                }
+                
             }
             return false;
+        }
+
+        public void TransferirException(ContaCorrente contaDestino, double valor)
+        {
+            if (valor <= 0)
+            {
+                throw new ArgumentException("Valor de transferência inválido!", nameof(valor));
+            }
+
+            this.SacarException(valor);
+            if(contaDestino != null)
+            {
+                contaDestino.Depositar(valor);
+            }
+            else
+            {
+                throw new NullReferenceException("A Conta Corrente da Conta de Destino deve ser preenchida");
+            }
         }
     }
 }
