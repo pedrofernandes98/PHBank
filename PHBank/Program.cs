@@ -115,43 +115,43 @@ namespace PHBank
 
         public static void TestarExceptions()
         {
-            try
-            {
-                ContaCorrente conta = new ContaCorrente(0, 0);
-            }
-            catch(ArgumentException ex)
-            {
-                Console.WriteLine($"Mensagem de erro: {ex.Message}");
-                Console.WriteLine($"Nome do Parâmetro que gerou a Exception: {ex.ParamName}");
-                Console.WriteLine("Stack Trace:");
-                Console.WriteLine(ex.StackTrace);
-            }
-            Console.WriteLine();
-            Console.WriteLine();
-            try
-            {
-                ContaCorrente conta = new ContaCorrente(123, 0);
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine($"Mensagem de erro: {ex.Message}");
-                Console.WriteLine($"Nome do Parâmetro que gerou a Exception: {ex.ParamName}");
-                Console.WriteLine("Stack Trace:");
-                Console.WriteLine(ex.StackTrace);
-            }
+            //try
+            //{
+            //    ContaCorrente conta = new ContaCorrente(0, 0);
+            //}
+            //catch(ArgumentException ex)
+            //{
+            //    Console.WriteLine($"Mensagem de erro: {ex.Message}");
+            //    Console.WriteLine($"Nome do Parâmetro que gerou a Exception: {ex.ParamName}");
+            //    Console.WriteLine("Stack Trace:");
+            //    Console.WriteLine(ex.StackTrace);
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine();
+            //try
+            //{
+            //    ContaCorrente conta = new ContaCorrente(123, 0);
+            //}
+            //catch (ArgumentException ex)
+            //{
+            //    Console.WriteLine($"Mensagem de erro: {ex.Message}");
+            //    Console.WriteLine($"Nome do Parâmetro que gerou a Exception: {ex.ParamName}");
+            //    Console.WriteLine("Stack Trace:");
+            //    Console.WriteLine(ex.StackTrace);
+            //}
 
-            try
-            {
-                ContaCorrente contaCorreta = new ContaCorrente(1212, 146565);
-                contaCorreta.Depositar(1000);
-                contaCorreta.SacarException(2000);
-            }
-            catch(SaldoInsuficienteException ex)
-            {
-                Console.WriteLine("Saldo: "+ ex.Saldo + " Valor Saque: " + ex.ValorSaque);
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-            }
+            //try
+            //{
+            //    ContaCorrente contaCorreta = new ContaCorrente(1212, 146565);
+            //    contaCorreta.Depositar(1000);
+            //    contaCorreta.SacarException(2000);
+            //}
+            //catch(SaldoInsuficienteException ex)
+            //{
+            //    Console.WriteLine("Saldo: "+ ex.Saldo + " Valor Saque: " + ex.ValorSaque);
+            //    Console.WriteLine(ex.Message);
+            //    Console.WriteLine(ex.StackTrace);
+            //}
 
             try
             {
@@ -159,13 +159,17 @@ namespace PHBank
                 contaCorreta.Depositar(1000);
                 ContaCorrente contaCorreta2 = new ContaCorrente(1212, 146563);
                 contaCorreta2.Depositar(1000);
-                contaCorreta2.TransferirException(contaCorreta,- 40);
+                contaCorreta2.TransferirException(contaCorreta,400000);
             }
-            catch (SaldoInsuficienteException ex)
+            catch (OperacaoFinanceiraException ex)
             {
-                Console.WriteLine(ex.Saldo + ex.ValorSaque);
+                //Console.WriteLine(ex.Saldo + ex.ValorSaque);
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
+
+                Console.WriteLine("\n-------------InnerException---------------\n");
+                Console.WriteLine(ex.InnerException.Message);
+                Console.WriteLine(ex.InnerException.StackTrace);
             }
             catch (ArgumentException ex)
             {

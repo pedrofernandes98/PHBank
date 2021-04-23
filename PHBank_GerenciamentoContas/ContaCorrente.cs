@@ -131,7 +131,15 @@ namespace PHBank_GerenciamentoContas
                 throw new ArgumentException("Valor de transferência inválido!", nameof(valor));
             }
 
-            this.SacarException(valor);
+            try
+            {
+                this.SacarException(valor);
+            }
+            catch(SaldoInsuficienteException ex)
+            {
+                throw new OperacaoFinanceiraException("Operação de transferência inválida devido a saldo insuficiênte para transferência", ex);
+            }
+            
             if(contaDestino != null)
             {
                 contaDestino.Depositar(valor);
