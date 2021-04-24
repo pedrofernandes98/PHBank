@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PHBank_RH", "PHBank_RH\PHBa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PHBank_GerenciamentoContas", "PHBank_GerenciamentoContas\PHBank_GerenciamentoContas.csproj", "{7A299A71-10A6-4AFD-AEE1-9DF14AF6888C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHBank_GerenciamentoContasTests", "PHBank_GerenciamentoContasTests\PHBank_GerenciamentoContasTests.csproj", "{12D3DBF1-E42E-42DD-BD8D-65D510130E0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PHBank_GerenciamentoContasTests", "PHBank_GerenciamentoContasTests\PHBank_GerenciamentoContasTests.csproj", "{12D3DBF1-E42E-42DD-BD8D-65D510130E0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

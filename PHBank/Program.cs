@@ -5,10 +5,11 @@ using PHBank_RH.Funcionarios;
 using PHBank_RH.Sistemas;
 using PHBank_RH.Externos;
 using PHBank_GerenciamentoContas;
+using System.IO;
 
 namespace PHBank
 {
-    class Program
+    public class Program
     {
         private enum TiposFuncionarios 
         { 
@@ -19,8 +20,55 @@ namespace PHBank
             //CadastrarFuncionarios();
             //LogarSistemaInterno();
             //RealizarTransacoesContaCorrente();
-            TestarExceptions();
+            //TestarExceptions();
+            //UsarRecursosExternosExplicito();
+            //UsarRecursosExternosImplicito();
+
+            Console.WriteLine("Fim do programa!");
             Console.ReadKey();
+        }
+
+        public static void UsarRecursosExternosImplicito()
+        {
+            using(FileReader reader = new FileReader("myFile.txt"))
+            {
+                try
+                {
+                    reader.ReadLine();
+                    reader.ReadLine();
+                    reader.ReadLine();
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine("Capturando um IOException");
+                    Console.WriteLine(ex.StackTrace);
+                }
+            }
+        }
+
+        public static void UsarRecursosExternosExplicito()
+        {
+            FileReader reader = null;
+
+            try
+            {
+                reader = new FileReader("meuArquivo.txt");
+                reader.ReadLine();
+                reader.ReadLine();
+                reader.ReadLine();
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Capturando um IOException");
+                Console.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                if(reader != null)
+                {
+                    reader.Dispose();
+                }
+            }
         }
 
         public static void LogarSistemaInterno()
