@@ -100,7 +100,7 @@ namespace PHBank_GerenciamentoContas
             if (valor > Saldo)
             {
                 string mensagem = $"Saldo insuficiente para o saque de R$ {valor}!\nSaldo Atual: R${Saldo}";
-                throw new SaldoInsuficienteException(Saldo, valor);
+                throw new SaldoInsuficienteException(mensagem, Saldo, valor);
             }
 
             Saldo -= valor;

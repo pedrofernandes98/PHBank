@@ -19,6 +19,13 @@ namespace PHBank_GerenciamentoContas
             Saldo = saldo;
             ValorSaque = valorSaque;
         }
+
+        public SaldoInsuficienteException(string message, double saldo, double valorSaque)
+            : this(message)
+        {
+            Saldo = saldo;
+            ValorSaque = valorSaque;
+        }
         public SaldoInsuficienteException(string message, Exception innerException)
             :base(message, innerException) { }
 
