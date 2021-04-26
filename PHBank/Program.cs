@@ -18,7 +18,7 @@ namespace PHBank
         static void Main(string[] args)
         {
             //CadastrarFuncionarios();
-            //LogarSistemaInterno();
+            LogarSistemaInterno();
             //RealizarTransacoesContaCorrente();
             //TestarExceptions();
             //UsarRecursosExternosExplicito();

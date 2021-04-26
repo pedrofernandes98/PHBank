@@ -1,4 +1,5 @@
-﻿using PHBank_RH.Interfaces;
+﻿using PHBank_RH.Helpers;
+using PHBank_RH.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace PHBank_RH.Funcionarios
         }
         public bool Autenticar(string senha)
         {
-            return Senha == senha;
+            return AutenticarHelper.CompararSenhas(Senha, senha);
         }
         public string GetNome()
         {
