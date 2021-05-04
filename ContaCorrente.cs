@@ -24,7 +24,7 @@ namespace PHBank_GerenciamentoContas
         /// </summary>
         /// <param name="agencia">Define o valor da propriedade <see cref="Agencia"/> que deve ser maior do que zero.</param>
         /// <param name="numeroConta">Define o valor da propriedade <see cref="NumeroConta"/> que deve ser maior do que zero.</param>
-        /// <param name="ativa">Define o valor da propriedade <see cref="Ativa"/> que por padrão recebe true.</param>
+        /// <param name="ativa">Define o valor da propriedade <see cref="Ativa"/> que por padrão recebe <see cref="true">.</param>
         public ContaCorrente(int agencia, int numeroConta, bool ativa = true)
         {
             validaAgenciaConta(agencia, numeroConta);
@@ -35,13 +35,14 @@ namespace PHBank_GerenciamentoContas
 
             TotalContas++;
         }
+
         /// <summary>
         /// Inicializa uma nova instância da classe <see cref="ContaCorrente"/> com os argumentos utilizados.
         /// </summary>
-        /// <param name="titular">Define o valor da propriedade <see cref="Titular"/>.</param> 
+        /// <param name="titular">Define o valor da propriedade <see cref="Titular">.</param>
         /// <param name="agencia">Define o valor da propriedade <see cref="Agencia"/> que deve ser maior do que zero.</param>
         /// <param name="numeroConta">Define o valor da propriedade <see cref="NumeroConta"/> que deve ser maior do que zero.</param>
-        /// <param name="ativa">Define o valor da propriedade <see cref="Ativa"/> que por padrão recebe true.</param>
+        /// <param name="ativa">Define o valor da propriedade <see cref="Ativa"/> que por padrão recebe <see cref="true">.</param>
         public ContaCorrente(Cliente titular, int agencia, int numeroConta, bool ativa = true)
         {
             validaAgenciaConta(agencia, numeroConta);
@@ -53,15 +54,16 @@ namespace PHBank_GerenciamentoContas
 
             TotalContas++;
         }
+
         /// <summary>
         /// Inicializa uma nova instância da classe <see cref="ContaCorrente"/> com os argumentos utilizados.
         /// </summary>
-        /// <param name="nome">Define o valor da propriedade <see cref="Cliente.Nome"/> do <see cref="Titular"/>.</param>
-        /// <param name="cpf">Define o valor da propriedade <see cref="Cliente.CPF"/> do <see cref="Titular"/>.</param>
+        /// <param name="nome">Define o valor da propriedade <see cref="Cliente.Nome"/> do <see cref="Titular">.</param>
+        /// <param name="cpf">Define o valor da propriedade <see cref="Cliente.CPF"/> do <see cref="Titular">.</param>
         /// <param name="agencia">Define o valor da propriedade <see cref="Agencia"/>.</param>
         /// <param name="numeroConta">Define o valor da propriedade <see cref="NumeroConta"/>.</param>
-        /// <param name="profissao">Define o valor da propriedade <see cref="Cliente.Profissao"/> do <see cref="Titular"/>.</param>
-        /// <param name="ativa">Define o valor da propriedade <see cref="Ativa"/> que por padrão recebe true.</param>
+        /// <param name="profissao">Define o valor da propriedade <see cref="Cliente.Profissao"/> do <see cref="Titular">.</param>
+        /// <param name="ativa">Define o valor da propriedade <see cref="Ativa"/> que por padrão recebe <see cref="true">.</param>
         public ContaCorrente(string nome, string cpf, int agencia, int numeroConta, string profissao = "", bool ativa = true)
         {
             validaAgenciaConta(agencia, numeroConta);
@@ -113,13 +115,7 @@ namespace PHBank_GerenciamentoContas
             Saldo -= valor;
             return true;
         }
-        
-        /// <summary>
-        /// Método efetua o saque e atualiza o valor da propriedade <see cref="Saldo"/> da <see cref="ContaCorrente"/>
-        /// </summary>
-        /// <exception cref="ArgumentException">Exceção lançada quando um <paramref name="valor"/> é menor que zero.</exception>
-        /// <exception cref="SaldoInsuficienteException">Exceção lançada quando um <paramref name="valor"/> é menor que o valor do <see cref="Saldo">.</see>/></exception>
-        /// <param name="valor">Valor a ser sacado, deve ser maior que zero e menor que o valor do <see cref="Saldo"/>.</param>
+
         public void SacarException(double valor)
         {
             if (valor <= 0)

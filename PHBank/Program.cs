@@ -23,6 +23,7 @@ namespace PHBank
             //TestarExceptions();
             //UsarRecursosExternosExplicito();
             //UsarRecursosExternosImplicito();
+            
 
             Console.WriteLine("Fim do programa!");
             Console.ReadKey();
@@ -155,7 +156,6 @@ namespace PHBank
             {
                 Console.WriteLine("Tranferência realizada!");
             }
-            
             Console.WriteLine($"{contaCorrente.Titular.Nome} - R${contaCorrente.Saldo}");
             Console.WriteLine($"{contaCorrente2.Titular.Nome} - R${contaCorrente2.Saldo}");
 
