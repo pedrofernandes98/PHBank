@@ -16,7 +16,6 @@ namespace PHBank_GerenciamentoContas
         public int NumeroConta { get;} //readOnly
         public int Agencia { get; }//readOnly
         public double Saldo { get; private set; }
-
         public bool Ativa { get; set; }
 
         /// <summary>
