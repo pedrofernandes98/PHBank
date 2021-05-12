@@ -20,6 +20,49 @@ namespace PHBank
             }
 
             URL = url;
+            _parametros = url.Substring(url.IndexOf('?') + 1);
+        }
+
+        public void MostraParametros()
+        {
+            //string url = "teste.com.br/teste?moedaOrigem=real&moedaDestino=dolar&valor=100";
+            string moedaOrigem = "moedaOrigem";
+            string moedaDestino = "moedaDestino";
+            string valor = "valor";
+
+            //string parametros = url.Substring(url.IndexOf('?') + 1);
+
+            string[] valores = _parametros.Split('&');
+
+            Console.WriteLine($"Parâmetros: {_parametros}");
+            Console.WriteLine($"moedaOrigem: {valores[0].Substring(moedaOrigem.Length + 1)}");
+            Console.WriteLine($"moedaDestino: {valores[1].Substring(moedaDestino.Length + 1)}");
+            Console.WriteLine($"valor: {valores[2].Substring(valor.Length + 1)}");
+            Console.WriteLine("Fim do programa!");
+            Console.ReadKey();
+        }
+
+        public string GetValor(string parametro)
+        {
+            string valor = "";
+            int indexParametro = _parametros.ToUpper().IndexOf(parametro.ToUpper());
+            if(string.IsNullOrEmpty(parametro) || indexParametro == -1)
+            {
+                throw new ArgumentException(parametro);
+            }
+            else
+            {
+                parametro = parametro + "=";
+                valor = _parametros.Substring(indexParametro + parametro.Length);
+                int indexEComercial = valor.IndexOf('&');
+                if(indexEComercial != -1)
+                {
+                    valor = valor.Remove(indexEComercial);
+                }
+            }
+
+            return valor;
+
         }
     }
 }

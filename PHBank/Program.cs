@@ -24,21 +24,13 @@ namespace PHBank
             //UsarRecursosExternosExplicito();
             //UsarRecursosExternosImplicito();
 
-            string url = "teste.com.br/teste?moedaOrigem=real&moedaDestino=dolar&valor=100";
-            string moedaOrigem = "moedaOrigem";
-            string moedaDestino = "moedaDestino";
-            string valor = "valor";
-
-            string parametros = url.Substring(url.IndexOf('?') + 1);
-
-            string[] valores = parametros.Split('&');
-
-            Console.WriteLine($"Parâmetros: {parametros}");
-            Console.WriteLine($"moedaOrigem: {valores[0].Substring(moedaOrigem.Length + 1)}");
-            Console.WriteLine($"moedaDestino: {valores[1].Substring(moedaDestino.Length + 1)}");
-            Console.WriteLine($"valor: {valores[2].Substring(valor.Length + 1)}");
-            Console.WriteLine("Fim do programa!");
-            Console.ReadKey();
+            ExtratorURL url = new ExtratorURL("teste.com.br/teste?moedaOrigem=real&moedaDestino=dolar&valor=100");
+            url.MostraParametros();
+            Console.WriteLine(url.GetValor("moedaorigem"));
+            Console.WriteLine(url.GetValor("moedaDestino"));
+            //Console.WriteLine(url.GetValor(""));
+            //.WriteLine(url.GetValor(""));
+            Console.ReadLine();
         }
 
         public static void UsarRecursosExternosImplicito()
