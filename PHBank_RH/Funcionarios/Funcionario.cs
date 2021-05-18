@@ -25,6 +25,16 @@ namespace PHBank_RH.Funcionarios
 
         public abstract void AumentarSalario();
 
+        public override bool Equals(object obj)
+        {
+            Funcionario c = obj as Funcionario;
+
+            if (c != null)
+                return c.CPF == CPF;
+
+            return false;
+        }
+
         
     }
 }

@@ -6,6 +6,7 @@ using PHBank_RH.Sistemas;
 using PHBank_RH.Externos;
 using PHBank_GerenciamentoContas;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace PHBank
 {
@@ -23,6 +24,18 @@ namespace PHBank
             //TestarExceptions();
             //UsarRecursosExternosExplicito();
             //UsarRecursosExternosImplicito();
+            Console.ReadLine();
+        }
+
+        public static void Curso6FuncoesStrings()
+        {
+            string pattern = "[0-9]{4,5}-?[0-9]{4}";
+            pattern = "[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}";
+            string text = "jdsfhksdjhfdsjkfkds 192168102-91 dsfjgndsjkndsjkdsfjknsjkfn";
+            Match match = Regex.Match(text, pattern);
+            Console.WriteLine(match.Success);
+            Console.WriteLine(match.Value);
+
 
             ExtratorURL url = new ExtratorURL("teste.com.br/teste?moedaOrigem=real&moedaDestino=dolar&valor=100");
             url.MostraParametros();

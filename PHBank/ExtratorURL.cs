@@ -64,5 +64,10 @@ namespace PHBank
             return valor;
 
         }
+
+        public override string ToString()
+        {
+            return "Essa é uma classe que extrai os query params de uma determinada URL";
+        }
     }
 }
