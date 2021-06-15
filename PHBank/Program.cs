@@ -24,9 +24,49 @@ namespace PHBank
             //TestarExceptions();
             //UsarRecursosExternosExplicito();
             //UsarRecursosExternosImplicito();
+
+            ListaContaCorrente contas = new ListaContaCorrente();
+
+            contas.Adicionar(new ContaCorrente(123, 123456));
+            contas.Adicionar(new ContaCorrente(123, 456789));
+            var contaRemovida = new ContaCorrente(111, 111111);
+            contas.Adicionar(contaRemovida);
+            contas.Adicionar(new ContaCorrente(123, 456781));
+            contas.Adicionar(new ContaCorrente(123, 123456));
+            contas.Adicionar(new ContaCorrente(123, 456789));
+            contas.Adicionar(new ContaCorrente(123, 456781));
+
+            contas.Listar();
+
+            Console.WriteLine();
+
+            contas.Remover(contaRemovida);
+            contas.Listar();
             Console.ReadLine();
         }
 
+        public static void TestesComArraysAndStringInterpolation()
+        {
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                new ContaCorrente(123, 123456),
+                new ContaCorrente(123, 456789),
+                new ContaCorrente(123, 456781)
+            };
+
+            for (int i = 0; i < contas.Length; i++)
+            {
+                Console.WriteLine($"Ag: {contas[i].Agencia} | Conta: {contas[i].NumeroConta}");
+            }
+
+            string teste = @$"
+                Teste string interpolation {contas[0].Agencia}
+                Teste string interpolation {contas[0].Agencia}
+            ";
+
+            Console.WriteLine();
+            Console.WriteLine(teste);
+        }
         public static void Curso6FuncoesStrings()
         {
             string pattern = "[0-9]{4,5}-?[0-9]{4}";

@@ -178,5 +178,14 @@ namespace PHBank_GerenciamentoContas
                 throw new NullReferenceException("A Conta Corrente da Conta de Destino deve ser preenchida");
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            ContaCorrente outraContaCorrente = obj as ContaCorrente;
+
+            return outraContaCorrente != null ?
+                (Agencia == outraContaCorrente.Agencia && NumeroConta == outraContaCorrente.NumeroConta) :
+                false;
+        }
     }
 }
