@@ -13,6 +13,8 @@ namespace PHBank
 
         private int _ProximoIndice;
 
+        public int Tamanho { get { return _ProximoIndice; } }
+
         public ListaContaCorrente(int length = 5)
         {
             _listaContaCorrente = new ContaCorrente[length];
@@ -24,6 +26,12 @@ namespace PHBank
             VerificaTamanho(_ProximoIndice + 1);
             _listaContaCorrente[_ProximoIndice] = contaCorrente;
             _ProximoIndice++;
+        }
+        
+        public void Adicionar(params ContaCorrente[] contasCorrentes)
+        {
+            foreach(ContaCorrente conta in contasCorrentes)
+                this.Adicionar(conta);
         }
 
         public void Remover(ContaCorrente contaCorrente)
@@ -69,6 +77,24 @@ namespace PHBank
                     Console.WriteLine($"{i + 1} - Ag: {_listaContaCorrente[i].Agencia} | Conta: {_listaContaCorrente[i].NumeroConta}");
             }
         }
+
+        private ContaCorrente GetContaCorrenteByIndice(int indice)
+        {
+            if (indice < 0 || indice > Tamanho)
+                throw new ArgumentOutOfRangeException(nameof(indice));
+
+            return _listaContaCorrente[indice];
+        }
+
+        public ContaCorrente this[int indice]
+        {
+            get
+            {
+                return GetContaCorrenteByIndice(indice);
+            }
+        }
+
+        
 
 
     }

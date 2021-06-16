@@ -42,7 +42,32 @@ namespace PHBank
 
             contas.Remover(contaRemovida);
             contas.Listar();
+
+            Console.WriteLine("---");
+            Console.WriteLine($"{contas[2].Agencia} | {contas[2].NumeroConta}");
+
+            Console.WriteLine("---");
+
+            ListaContaCorrente novaLista = new ListaContaCorrente();
+
+            novaLista.Adicionar(
+                GerarContaCorrente(),
+                GerarContaCorrente(),
+                GerarContaCorrente(),
+                GerarContaCorrente(),
+                GerarContaCorrente(),
+                GerarContaCorrente()
+                );
+
+            novaLista.Listar();
             Console.ReadLine();
+        }
+
+        public static ContaCorrente GerarContaCorrente()
+        {
+            Random x = new Random();
+
+            return new ContaCorrente(x.Next(1, 100), x.Next(1, 100000));
         }
 
         public static void TestesComArraysAndStringInterpolation()
