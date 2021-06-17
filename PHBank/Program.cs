@@ -25,7 +25,7 @@ namespace PHBank
             //UsarRecursosExternosExplicito();
             //UsarRecursosExternosImplicito();
 
-            ListaContaCorrente contas = new ListaContaCorrente();
+            Lista<ContaCorrente> contas = new Lista<ContaCorrente>();
 
             contas.Adicionar(new ContaCorrente(123, 123456));
             contas.Adicionar(new ContaCorrente(123, 456789));
@@ -36,19 +36,19 @@ namespace PHBank
             contas.Adicionar(new ContaCorrente(123, 456789));
             contas.Adicionar(new ContaCorrente(123, 456781));
 
-            contas.Listar();
+            //contas.Listar();
 
             Console.WriteLine();
 
             contas.Remover(contaRemovida);
-            contas.Listar();
+            //contas.Listar();
 
             Console.WriteLine("---");
             Console.WriteLine($"{contas[2].Agencia} | {contas[2].NumeroConta}");
 
             Console.WriteLine("---");
 
-            ListaContaCorrente novaLista = new ListaContaCorrente();
+            Lista<ContaCorrente> novaLista = new Lista<ContaCorrente>();
 
             novaLista.Adicionar(
                 GerarContaCorrente(),
@@ -59,7 +59,20 @@ namespace PHBank
                 GerarContaCorrente()
                 );
 
-            novaLista.Listar();
+            Lista<int> listaInt = new Lista<int>();
+
+            listaInt.Adicionar(1, 2, 3, 4);
+            listaInt.Adicionar(66);
+            listaInt.Remover(3);
+
+            for(int i = 0; i < listaInt.Tamanho; i++)
+            {
+                Console.WriteLine($"listaInt[{i}] = {listaInt[i]}");
+            }
+
+            
+
+            //novaLista.Listar();
             Console.ReadLine();
         }
 
