@@ -70,7 +70,12 @@ namespace PHBank
                 Console.WriteLine($"listaInt[{i}] = {listaInt[i]}");
             }
 
-            
+            List<int> lista = new List<int>();
+
+            lista.AddExtends(4, 959, 269, 70);
+
+            foreach(var item in lista)
+                Console.WriteLine(item);
 
             //novaLista.Listar();
             Console.ReadLine();
