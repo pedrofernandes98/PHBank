@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PHBank
 {
-    public static class ListExtensions
+    public static class ListExtensionsDecapred
     {
         public static void AddExtends(this List<int> lista, params int[] itens)
         {

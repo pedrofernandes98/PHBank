@@ -7,6 +7,7 @@ using PHBank_RH.Externos;
 using PHBank_GerenciamentoContas;
 using System.IO;
 using System.Text.RegularExpressions;
+using PHBank.Extensions;
 
 namespace PHBank
 {
@@ -72,10 +73,26 @@ namespace PHBank
 
             List<int> lista = new List<int>();
 
-            lista.AddExtends(4, 959, 269, 70);
+            lista.AddManyItens<int>(4, 959, 269, 70);
 
             foreach(var item in lista)
                 Console.WriteLine(item);
+
+            List<string> names = new List<string>() 
+            { 
+               "Ronaldo"
+            };
+
+            names.AddManyItens<string>("Pedro", "Paulo", "Miguel", "Letícia", "Maria");
+
+            names.PrintList();
+
+            Console.Clear();
+
+            List<string> forLets = new List<string>();
+
+            forLets.AddManyItens("Pedro", "S2", "Leticia");
+            forLets.PrintList();
 
             //novaLista.Listar();
             Console.ReadLine();
