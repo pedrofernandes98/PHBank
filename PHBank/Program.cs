@@ -84,10 +84,10 @@ namespace PHBank
             };
 
             names.AddManyItens<string>("Pedro", "Paulo", "Miguel", "Letícia", "Maria");
-
+            names.Sort();
             names.PrintList();
 
-            Console.Clear();
+            //Console.Clear();
 
             List<string> forLets = new List<string>();
 
