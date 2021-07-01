@@ -8,6 +8,7 @@ using PHBank_GerenciamentoContas;
 using System.IO;
 using System.Text.RegularExpressions;
 using PHBank.Extensions;
+using PHBank_GerenciamentoContas.Comparer;
 
 namespace PHBank
 {
@@ -59,6 +60,38 @@ namespace PHBank
                 GerarContaCorrente(),
                 GerarContaCorrente()
                 );
+
+            List<ContaCorrente> listaContaCorrente = new List<ContaCorrente>();
+
+            listaContaCorrente.Add(GerarContaCorrente());
+            listaContaCorrente.Add(GerarContaCorrente());
+            listaContaCorrente.Add(GerarContaCorrente());
+            listaContaCorrente.Add(GerarContaCorrente());
+            listaContaCorrente.Add(GerarContaCorrente());
+
+            foreach (var item in listaContaCorrente)
+            {
+                Console.WriteLine($"Ag - {item.Agencia}| Conta - {item.NumeroConta}");
+            }
+
+            listaContaCorrente.Sort();
+            Console.WriteLine("-------");
+            Console.WriteLine("Ordenado por Conta");
+            foreach (var item in listaContaCorrente)
+            {
+                Console.WriteLine($"Ag - {item.Agencia}| Conta - {item.NumeroConta}");
+            }
+
+            listaContaCorrente.Sort(new CompareByAgencia());
+            Console.WriteLine("-------");
+            Console.WriteLine("Ordenado por Agencia");
+            foreach (var item in listaContaCorrente)
+            {
+                Console.WriteLine($"Ag - {item.Agencia}| Conta - {item.NumeroConta}");
+            }
+
+
+
 
             Lista<int> listaInt = new Lista<int>();
 

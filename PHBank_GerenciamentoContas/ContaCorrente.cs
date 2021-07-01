@@ -9,7 +9,7 @@ namespace PHBank_GerenciamentoContas
     /// <summary>
     /// Classe que define uma Conta Corrente do Banco PHBank.
     /// </summary>
-    public class ContaCorrente
+    public class ContaCorrente : IComparable
     {
         public static int TotalContas { get; private set; }
         public Cliente Titular { get; set; }
@@ -187,5 +187,17 @@ namespace PHBank_GerenciamentoContas
                 (Agencia == outraContaCorrente.Agencia && NumeroConta == outraContaCorrente.NumeroConta) :
                 false;
         }
+
+        public int CompareTo(object obj)
+        {
+            var conta = obj as ContaCorrente;
+
+            if (conta != null)
+                return this.NumeroConta.CompareTo(conta.NumeroConta);
+
+            return -1;
+        }
     }
+
+
 }
