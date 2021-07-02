@@ -197,6 +197,42 @@ namespace PHBank_GerenciamentoContas
 
             return -1;
         }
+
+        public static ContaCorrente GerarContaCorrente()
+        {
+            Random x = new Random();
+
+            return new ContaCorrente(x.Next(1, 100), x.Next(1, 100000));
+        }
+
+        public void PrintContaCorrente()
+        {
+            Console.WriteLine($"Ag: {this.Agencia} | Conta: {this.NumeroConta}");
+        }
+
+        public static List<ContaCorrente> GerarListaContasCorrentes(int quantidade)
+        {
+            if (quantidade <= 0)
+            {
+                throw new ArgumentException($"O valor da propriedade {nameof(quantidade)} dever ser maior que 0");
+            }
+
+            var list = new List<ContaCorrente>();
+            for (int i = 0; i < quantidade; i++)
+            {
+                list.Add(GerarContaCorrente());
+            }
+
+            return list;
+        }
+
+        public static void PrintListContasCorrentes(List<ContaCorrente> lista)
+        {
+            foreach(var item in lista)
+            {
+                item.PrintContaCorrente();
+            }
+        }
     }
 
 

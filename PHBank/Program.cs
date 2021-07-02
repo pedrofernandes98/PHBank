@@ -9,6 +9,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using PHBank.Extensions;
 using PHBank_GerenciamentoContas.Comparer;
+using PHBank_RH.Extensions;
 
 namespace PHBank
 {
@@ -27,6 +28,15 @@ namespace PHBank
             //UsarRecursosExternosExplicito();
             //UsarRecursosExternosImplicito();
 
+            var lista = ContaCorrente.GerarListaContasCorrentes(5);
+            Console.WriteLine("Lista Desordenada");
+            ContaCorrente.PrintListContasCorrentes(lista);
+            Console.ReadLine();
+
+            
+        }
+        public static void ListsAndGenericsAndExtensionsMethodsAndOtherThings()
+        {
             Lista<ContaCorrente> contas = new Lista<ContaCorrente>();
 
             contas.Adicionar(new ContaCorrente(123, 123456));
@@ -53,21 +63,21 @@ namespace PHBank
             Lista<ContaCorrente> novaLista = new Lista<ContaCorrente>();
 
             novaLista.Adicionar(
-                GerarContaCorrente(),
-                GerarContaCorrente(),
-                GerarContaCorrente(),
-                GerarContaCorrente(),
-                GerarContaCorrente(),
-                GerarContaCorrente()
+                ContaCorrente.GerarContaCorrente(),
+                ContaCorrente.GerarContaCorrente(),
+                ContaCorrente.GerarContaCorrente(),
+                ContaCorrente.GerarContaCorrente(),
+                ContaCorrente.GerarContaCorrente(),
+                ContaCorrente.GerarContaCorrente()
                 );
 
             List<ContaCorrente> listaContaCorrente = new List<ContaCorrente>();
 
-            listaContaCorrente.Add(GerarContaCorrente());
-            listaContaCorrente.Add(GerarContaCorrente());
-            listaContaCorrente.Add(GerarContaCorrente());
-            listaContaCorrente.Add(GerarContaCorrente());
-            listaContaCorrente.Add(GerarContaCorrente());
+            listaContaCorrente.Add(ContaCorrente.GerarContaCorrente());
+            listaContaCorrente.Add(ContaCorrente.GerarContaCorrente());
+            listaContaCorrente.Add(ContaCorrente.GerarContaCorrente());
+            listaContaCorrente.Add(ContaCorrente.GerarContaCorrente());
+            listaContaCorrente.Add(ContaCorrente.GerarContaCorrente());
 
             foreach (var item in listaContaCorrente)
             {
@@ -90,7 +100,7 @@ namespace PHBank
                 Console.WriteLine($"Ag - {item.Agencia}| Conta - {item.NumeroConta}");
             }
 
-
+            listaContaCorrente.PrintList<ContaCorrente>();
 
 
             Lista<int> listaInt = new Lista<int>();
@@ -99,7 +109,7 @@ namespace PHBank
             listaInt.Adicionar(66);
             listaInt.Remover(3);
 
-            for(int i = 0; i < listaInt.Tamanho; i++)
+            for (int i = 0; i < listaInt.Tamanho; i++)
             {
                 Console.WriteLine($"listaInt[{i}] = {listaInt[i]}");
             }
@@ -108,11 +118,11 @@ namespace PHBank
 
             lista.AddManyItens<int>(4, 959, 269, 70);
 
-            foreach(var item in lista)
+            foreach (var item in lista)
                 Console.WriteLine(item);
 
-            List<string> names = new List<string>() 
-            { 
+            List<string> names = new List<string>()
+            {
                "Ronaldo"
             };
 
@@ -129,13 +139,12 @@ namespace PHBank
 
             //novaLista.Listar();
             Console.ReadLine();
-        }
 
-        public static ContaCorrente GerarContaCorrente()
-        {
-            Random x = new Random();
 
-            return new ContaCorrente(x.Next(1, 100), x.Next(1, 100000));
+            Console.Clear();
+            var func = new Desenvolvedor("Pedro", "12345678", 2000.0);
+
+            func.TestExtensionsMethods();
         }
 
         public static void TestesComArraysAndStringInterpolation()
