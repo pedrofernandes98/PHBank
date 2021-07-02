@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using PHBank.Extensions;
 using PHBank_GerenciamentoContas.Comparer;
 using PHBank_RH.Extensions;
+using System.Linq;
 
 namespace PHBank
 {
@@ -29,11 +30,29 @@ namespace PHBank
             //UsarRecursosExternosImplicito();
 
             var lista = ContaCorrente.GerarListaContasCorrentes(5);
+            lista.Add(new ContaCorrente(lista[3].Agencia, lista[3].NumeroConta - 1));
+            lista.Add(new ContaCorrente(lista[3].Agencia, lista[3].NumeroConta - 2));
+            lista.Add(new ContaCorrente(lista[3].Agencia - 1, lista[3].NumeroConta));
             Console.WriteLine("Lista Desordenada");
             ContaCorrente.PrintListContasCorrentes(lista);
-            Console.ReadLine();
-
             
+            Console.WriteLine("=======================================================");
+            
+            Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.NumeroConta)}");
+            lista = lista.OrderBy(c => c.NumeroConta).ToList<ContaCorrente>();
+            ContaCorrente.PrintListContasCorrentes(lista);
+            
+            Console.WriteLine("=======================================================");
+            Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.Agencia)}");
+            lista = lista.OrderBy(c => c.Agencia).ToList();
+            ContaCorrente.PrintListContasCorrentes(lista);
+            
+            Console.WriteLine("=======================================================");
+            Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.Agencia)} e {nameof(ContaCorrente.NumeroConta)}");
+            lista = lista.OrderBy(c => c.Agencia).ThenBy(c => c.NumeroConta).ToList();
+            ContaCorrente.PrintListContasCorrentes(lista);
+
+            Console.ReadLine();
         }
         public static void ListsAndGenericsAndExtensionsMethodsAndOtherThings()
         {
