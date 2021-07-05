@@ -32,24 +32,35 @@ namespace PHBank
             var lista = ContaCorrente.GerarListaContasCorrentes(5);
             lista.Add(new ContaCorrente(lista[3].Agencia, lista[3].NumeroConta - 1));
             lista.Add(new ContaCorrente(lista[3].Agencia, lista[3].NumeroConta - 2));
+            lista.Add(null);
             lista.Add(new ContaCorrente(lista[3].Agencia - 1, lista[3].NumeroConta));
             Console.WriteLine("Lista Desordenada");
-            ContaCorrente.PrintListContasCorrentes(lista);
+            ContaCorrente.PrintListContasCorrentes(lista.Where(c => c != null).ToList());
             
             Console.WriteLine("=======================================================");
             
             Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.NumeroConta)}");
-            lista = lista.OrderBy(c => c.NumeroConta).ToList<ContaCorrente>();
+            lista = lista
+                .Where(c => c != null)
+                .OrderBy(c => c.NumeroConta)
+                .ToList<ContaCorrente>();
             ContaCorrente.PrintListContasCorrentes(lista);
             
             Console.WriteLine("=======================================================");
             Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.Agencia)}");
-            lista = lista.OrderBy(c => c.Agencia).ToList();
+            lista = lista
+                .Where(c => c != null)
+                .OrderBy(c => c.Agencia)
+                .ToList();
             ContaCorrente.PrintListContasCorrentes(lista);
             
             Console.WriteLine("=======================================================");
             Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.Agencia)} e {nameof(ContaCorrente.NumeroConta)}");
-            lista = lista.OrderBy(c => c.Agencia).ThenBy(c => c.NumeroConta).ToList();
+            lista = lista
+                .Where(c => c != null)
+                .OrderBy(c => c.Agencia)
+                .ThenBy(c => c.NumeroConta)
+                .ToList();
             ContaCorrente.PrintListContasCorrentes(lista);
 
             Console.ReadLine();
