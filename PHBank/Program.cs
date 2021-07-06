@@ -28,7 +28,20 @@ namespace PHBank
             //TestarExceptions();
             //UsarRecursosExternosExplicito();
             //UsarRecursosExternosImplicito();
+            //ListsAndGenericsAndExtensionsMethodsAndOtherThings
+            //LearnLinqOrderBtWhereAndOthers
 
+            var filePath = "C:\\Dev\\Alura\\PHBank\\Files\\contas.txt";
+            var reader = new FileReader(filePath, FileMode.Open);
+
+            reader.ShowAllFile();
+
+
+            Console.ReadLine();
+        }
+
+        public static void LearnLinqOrderBtWhereAndOthers()
+        {
             var lista = ContaCorrente.GerarListaContasCorrentes(5);
             lista.Add(new ContaCorrente(lista[3].Agencia, lista[3].NumeroConta - 1));
             lista.Add(new ContaCorrente(lista[3].Agencia, lista[3].NumeroConta - 2));
@@ -36,16 +49,16 @@ namespace PHBank
             lista.Add(new ContaCorrente(lista[3].Agencia - 1, lista[3].NumeroConta));
             Console.WriteLine("Lista Desordenada");
             ContaCorrente.PrintListContasCorrentes(lista.Where(c => c != null).ToList());
-            
+
             Console.WriteLine("=======================================================");
-            
+
             Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.NumeroConta)}");
             lista = lista
                 .Where(c => c != null)
                 .OrderBy(c => c.NumeroConta)
                 .ToList<ContaCorrente>();
             ContaCorrente.PrintListContasCorrentes(lista);
-            
+
             Console.WriteLine("=======================================================");
             Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.Agencia)}");
             lista = lista
@@ -53,7 +66,7 @@ namespace PHBank
                 .OrderBy(c => c.Agencia)
                 .ToList();
             ContaCorrente.PrintListContasCorrentes(lista);
-            
+
             Console.WriteLine("=======================================================");
             Console.WriteLine($"Lista Ordenada por {nameof(ContaCorrente.Agencia)} e {nameof(ContaCorrente.NumeroConta)}");
             lista = lista
@@ -62,8 +75,6 @@ namespace PHBank
                 .ThenBy(c => c.NumeroConta)
                 .ToList();
             ContaCorrente.PrintListContasCorrentes(lista);
-
-            Console.ReadLine();
         }
         public static void ListsAndGenericsAndExtensionsMethodsAndOtherThings()
         {
@@ -220,7 +231,7 @@ namespace PHBank
 
         public static void UsarRecursosExternosImplicito()
         {
-            using(FileReader reader = new FileReader("myFile.txt"))
+            using(FileReaderDecapred reader = new FileReaderDecapred("myFile.txt"))
             {
                 try
                 {
@@ -238,11 +249,11 @@ namespace PHBank
 
         public static void UsarRecursosExternosExplicito()
         {
-            FileReader reader = null;
+            FileReaderDecapred reader = null;
 
             try
             {
-                reader = new FileReader("meuArquivo.txt");
+                reader = new FileReaderDecapred("meuArquivo.txt");
                 reader.ReadLine();
                 reader.ReadLine();
                 reader.ReadLine();
