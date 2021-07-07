@@ -28,7 +28,7 @@ namespace PHBank
             return stream;
         }
 
-        public void ShowAllFile()
+        public void ShowAllFileWithBuffer()
         {
             try
             {
@@ -37,11 +37,11 @@ namespace PHBank
                     var buffer = new byte[BufferLenght];
                     var contBytes = -1;
 
-                    do
+                    while(contBytes != 0)
                     {
                         contBytes = stream.Read(buffer, 0, BufferLenght);
-                        DecodeAndShowBytes(buffer, BufferLenght - contBytes);
-                    } while (contBytes == BufferLenght);
+                        DecodeAndShowBytes(buffer, contBytes);
+                    }
                 }
             }
             catch(Exception ex)
@@ -51,12 +51,33 @@ namespace PHBank
             }
         }
 
-        private void DecodeAndShowBytes(byte[] buffer, int garbage)
+        public void ShowAllFile()
         {
-            var bufferToPrint = new byte[buffer.Length - garbage];
-            Array.Copy(buffer, bufferToPrint, buffer.Length - garbage);
+            try
+            {
+                using (var stream = FileOpen())
+                using (var reader = new StreamReader(stream))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        Console.WriteLine(line);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private void DecodeAndShowBytes(byte[] buffer, int contBytes)
+        {
+            //var bufferToPrint = new byte[buffer.Length - garbage];
+            //Array.Copy(buffer, bufferToPrint, buffer.Length - garbage);
             var decoder = Encoding.UTF8;
-            var text = decoder.GetString(bufferToPrint);
+            var text = decoder.GetString(buffer, 0, contBytes);
             //Console.WriteLine(buffer.pos);
             Console.Write(text);
             
