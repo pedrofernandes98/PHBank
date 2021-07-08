@@ -1,33 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PHBank_GerenciamentoContas;
+using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PHBank
+namespace PHBank.Streams
 {
-    public class FileReader
+    public class FileReader : FileManipulation
     {
-        public string FilePath { get; set; }
-
-        public FileMode AccessMode { get; set; }
-
-        public readonly int BufferLenght = 1024;
-
-        public FileReader(string fullFileName, FileMode accessMode)
-        {
-            FilePath = fullFileName;
-            AccessMode = accessMode;
-        }
-
-        private FileStream FileOpen()
-        {
-            var stream = new FileStream(FilePath, AccessMode);
-            Console.WriteLine($"Abrindo o arquivo: {FilePath}");
-            return stream;
-        }
-
+        public FileReader(string fullFileName, FileMode accessMode) : base(fullFileName, accessMode) { }
+        
         public void ShowAllFileWithBuffer()
         {
             try
@@ -62,6 +43,28 @@ namespace PHBank
                     {
                         var line = reader.ReadLine();
                         Console.WriteLine(line);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        public void ShowAllFileComoContaCorrente()
+        {
+            try
+            {
+                using (var stream = FileOpen())
+                using (var reader = new StreamReader(stream))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var conta = ContaCorrente.GerarContaCorrentePorArquivo(line);
+                        conta.PrintFullContaCorrente();
                     }
                 }
             }

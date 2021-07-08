@@ -11,6 +11,7 @@ using PHBank.Extensions;
 using PHBank_GerenciamentoContas.Comparer;
 using PHBank_RH.Extensions;
 using System.Linq;
+using PHBank.Streams;
 
 namespace PHBank
 {
@@ -31,11 +32,14 @@ namespace PHBank
             //ListsAndGenericsAndExtensionsMethodsAndOtherThings
             //LearnLinqOrderBtWhereAndOthers
 
-            var filePath = "C:\\Dev\\Alura\\PHBank\\Files\\contas.txt";
-            var reader = new FileReader(filePath, FileMode.Open);
+            var filePath = "C:\\Dev\\Alura\\PHBank\\Files\\contas2.txt";
+            //var reader = new FileReader(filePath, FileMode.Open);
+            //reader.ShowAllFile();
+            //Console.WriteLine("=====================================");
+            //reader.ShowAllFileComoContaCorrente();
 
-            reader.ShowAllFile();
-
+            var file = new FileManipulation(filePath, FileMode.Open);
+            file.GenereteCSV("teste.csv");
 
             Console.ReadLine();
         }

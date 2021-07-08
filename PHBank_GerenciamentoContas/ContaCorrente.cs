@@ -73,6 +73,29 @@ namespace PHBank_GerenciamentoContas
             TotalContas++;
         }
 
+        /// <summary>
+        /// Inicializa uma nova instância da classe <see cref="ContaCorrente"/> com os argumentos utilizados.
+        /// </summary>
+        /// <param name="nome">Define o valor da propriedade <see cref="Cliente.Nome"/> do <see cref="Titular"/>.</param>
+        /// <param name="cpf">Define o valor da propriedade <see cref="Cliente.CPF"/> do <see cref="Titular"/>.</param>
+        /// <param name="agencia">Define o valor da propriedade <see cref="Agencia"/>.</param>
+        /// <param name="numeroConta">Define o valor da propriedade <see cref="NumeroConta"/>.</param>
+        /// <param name="saldoInicial"> Define o valor da propriedade <see cref="Saldo">
+        /// <param name="profissao">Define o valor da propriedade <see cref="Cliente.Profissao"/> do <see cref="Titular"/>.</param>
+        /// <param name="ativa">Define o valor da propriedade <see cref="Ativa"/> que por padrão recebe true.</param>
+        public ContaCorrente(string nome, string cpf, int agencia, int numeroConta, double saldoInicial, string profissao = "", bool ativa = true)
+        {
+            validaAgenciaConta(agencia, numeroConta);
+            Titular = new Cliente(nome, cpf, profissao);
+            Agencia = agencia;
+            NumeroConta = numeroConta;
+            this.Depositar(saldoInicial);
+            Saldo = 0;
+            Ativa = ativa;
+
+            TotalContas++;
+        }
+
         private void validaAgenciaConta(int agencia, int numeroConta)
         {
             if (agencia <= 0)
@@ -88,7 +111,7 @@ namespace PHBank_GerenciamentoContas
             if(valor > 0)
             {
                 Saldo += valor;
-                Console.WriteLine("Depósito realizado com sucesso!");
+                //Console.WriteLine("Depósito realizado com sucesso!");
                 return;
             }
 
@@ -210,6 +233,11 @@ namespace PHBank_GerenciamentoContas
             Console.WriteLine($"Ag: {this.Agencia} | Conta: {this.NumeroConta}");
         }
 
+        public void PrintFullContaCorrente()
+        {
+            Console.WriteLine($"Titular: {this.Titular.Nome} - Ag: {this.Agencia} | Conta: {this.NumeroConta} | Saldo: R${this.Saldo}");
+        }
+
         public static List<ContaCorrente> GerarListaContasCorrentes(int quantidade)
         {
             if (quantidade <= 0)
@@ -224,6 +252,19 @@ namespace PHBank_GerenciamentoContas
             }
 
             return list;
+        }
+
+        public static ContaCorrente GerarContaCorrentePorArquivo(string linha)
+        {
+            var dados = linha.Split(' ');
+
+            return new ContaCorrente(
+                nome: dados[3],
+                cpf: "",
+                agencia: int.Parse(dados[0]),
+                numeroConta: int.Parse(dados[1]), 
+                saldoInicial: double.Parse(dados[2])
+                );
         }
 
         public static void PrintListContasCorrentes(List<ContaCorrente> lista)
