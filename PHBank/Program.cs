@@ -38,8 +38,14 @@ namespace PHBank
             //Console.WriteLine("=====================================");
             //reader.ShowAllFileComoContaCorrente();
 
-            var file = new FileManipulation(filePath, FileMode.Open);
-            file.GenereteCSV("teste.csv");
+            //var file = new FileManipulation(filePath, FileMode.Open);
+            //file.GenereteCSV("teste.csv");
+            var c = ContaCorrente.GerarContaCorrente();
+            c.Titular = new Cliente();
+            c.Titular.Nome = "Ronaldo Nazário";
+            c.Depositar(1500);
+            BinaryFile.WriteBinaryFile(c);
+            BinaryFile.ReadBinaryFile();
 
             Console.ReadLine();
         }
