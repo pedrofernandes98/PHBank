@@ -41,6 +41,7 @@ namespace PHBank.Streams
                         var line = reader.ReadLine().Split(' ');
                         var formatLine = $"{line[0]},{line[1]},{line[2]},{line[3]}";
                         writer.WriteLine(formatLine);
+                        //writer.Flush() -> Despejar o buffer para o stream
                     }
                 }
             }

@@ -31,7 +31,31 @@ namespace PHBank
             //UsarRecursosExternosImplicito();
             //ListsAndGenericsAndExtensionsMethodsAndOtherThings
             //LearnLinqOrderBtWhereAndOthers
+            //FileStreamTestes();
+            UltimaAula();
 
+
+            Console.ReadLine();
+        }
+
+        public static void UltimaAula()
+        {
+            var streamConsole = Console.OpenStandardInput();
+            var leitura = streamConsole.Read(new byte[1024], 0, 1024);
+            File.WriteAllText("C:\\Dev\\Alura\\PHBank\\Files\\bytesLidosConsole.txt", $"Bytes Lidos da Console: {leitura}");
+
+            Console.WriteLine($"Lido do arquivo = {File.ReadAllText("C:\\Dev\\Alura\\PHBank\\Files\\bytesLidosConsole.txt")}");
+            var linhasArquivo = File.ReadAllLines("C:\\Dev\\Alura\\PHBank\\Files\\contas.txt");
+
+            foreach(var conta in linhasArquivo)
+            {
+                Console.WriteLine(conta);
+            }
+
+        }
+
+        public static void FileStreamTestes()
+        {
             var filePath = "C:\\Dev\\Alura\\PHBank\\Files\\contas2.txt";
             //var reader = new FileReader(filePath, FileMode.Open);
             //reader.ShowAllFile();
@@ -46,8 +70,6 @@ namespace PHBank
             c.Depositar(1500);
             BinaryFile.WriteBinaryFile(c);
             BinaryFile.ReadBinaryFile();
-
-            Console.ReadLine();
         }
 
         public static void LearnLinqOrderBtWhereAndOthers()
